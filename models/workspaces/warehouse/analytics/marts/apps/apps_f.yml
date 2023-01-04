@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: apps_f
+    description: Apps logs ip adress count aggregation
+    columns:
+      - name: country_region
+        description: country region as for example EMEA or APAC
+      - name: app
+      - name: year
+      - name: ip_address_count

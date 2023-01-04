@@ -1,0 +1,14 @@
+#read about profiles here - https://docs.getdbt.com/dbt-cli/configure-your-profile
+firebolt:
+  target: default
+  outputs:
+    default:
+      type: firebolt
+      database: "{{ env_var('FIREBOLT_DATABASE', '') }}"
+      api_endpoint: "{{ env_var('FIREBOLT_DATABASE_HOST', '') }}"
+      user: "{{ env_var('FIREBOLT_USER', '') }}"
+      password: "{{ env_var('FIREBOLT_PASSWORD', '') }}"
+      schema: "{{ env_var('LOCAL_SCHEMA', '') }}"
+      account_name: "{{ env_var('FIREBOLT_ACCOUNT_NAME', '') }}"
+      engine_name: "{{ env_var('FIREBOLT_ENGINE', '') }}"
+      threads: 1
