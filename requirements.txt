@@ -1,0 +1,2 @@
+dbt-firebolt==1.2.0
+dbt-core~=1.2

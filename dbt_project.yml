@@ -1,0 +1,40 @@
+name: 'dbt_project'
+version: '0.1.0'
+config-version: 2
+profile: 'firebolt'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+vars:
+  start_year: '2022'
+
+models:
+  dbt_project:
+    workspaces:
+      warehouse:
+        +tags:
+          - "warehouse"
+        analytics:
+          #for future use
+          #+required_docs: true
+          #+required_tests: true
+            marts:
+              +materialized: table       
+
+            staging:
+              +materialized: ephemeral
+
+seeds:
+  +quote_columns: false
+  dbt_project:
+    +enabled: true
+
+    countries_by_region:
+      description: >
+        Country codes, country names and regions
+      # Override column types
+      +column_types:
+        country_code: varchar(2)
+        country_name: varchar(32)
+        country_region: varchar(32)

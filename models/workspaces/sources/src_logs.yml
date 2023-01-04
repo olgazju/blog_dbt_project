@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: logs
+    description: company logs
+
+    tables:
+      - name: app_logs
+        description: fake apps logs for demo purpose 

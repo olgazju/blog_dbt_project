@@ -1,0 +1,41 @@
+create external table if not exists ext_logs
+    (
+        "id" TEXT NULL
+        , "ip_address" TEXT NULL
+        , "event_time" timestamp NULL
+	    , "app" TEXT NULL
+	    , "country" TEXT NULL
+	
+    )
+    
+    url = 'firebolt-dev-data-lake/demo/'
+    object_pattern = '*.csv'
+    CREDENTIALS = 
+    type = (CSV SKIP_HEADER_ROWS = 1)
+
+create fact table if not exists app_logs
+    (
+        "id" TEXT NULL
+        , "ip_address" TEXT NULL
+        , "event_time" timestamp NULL
+	    , "app" TEXT NULL
+	    , "country" TEXT NULL
+         , source_file_name text NULL
+        , source_file_timestamp timestamp NULL
+    )
+    primary index id
+
+
+insert into app_logs
+    select "id"
+        , "ip_address"
+        , "event_time"
+        , "app"
+        , "country"
+        , source_file_name
+        , source_file_timestamp
+    from ext_logs
+    where source_file_name not in (
+        select distinct source_file_name
+        from app_logs
+    );
