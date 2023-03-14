@@ -1,6 +1,6 @@
 # Demo dbt project
 
-This repository contains the source code for my blog
+This repository contains the source code for my post "How we mastered dbt: A true story"
 
 ## Local Setup for macOS
 
@@ -8,7 +8,7 @@ This repository contains the source code for my blog
 
 2. Install [Docker](https://docs.docker.com/desktop/mac/install/)
 
-3. Install Ptyhon and requirements.txt
+3. Install Python and requirements.txt
 
     `pip install -r requirements.txt`
 
